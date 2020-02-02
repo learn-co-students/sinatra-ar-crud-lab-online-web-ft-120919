@@ -2,6 +2,11 @@
 
 
 <div class="article">
-  <h3>Title: <%= @a.title %></h3><br>
-  <h4>Content: <%= @a.content %></h4><br>
+  <h3>Title: <%= @article.title %></h3><br>
+  <h4>Content: <%= @article.content %></h4><br>
 </div><br>
+
+<form action="/articles/<%= @article.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+</form>

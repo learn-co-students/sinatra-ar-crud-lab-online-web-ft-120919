@@ -12,26 +12,47 @@ class ApplicationController < Sinatra::Base
   get '/' do
   end
 
+  get '/articles' do
+    @articles = Article.all
+    erb :index
+  end
+
   get '/articles/new' do 
+    @article = Article.new
     erb :new
   end
 
   post '/articles' do 
-    @a = Article.create(params[:article])
-    @articles = Article.all
+    @article = Article.create(params[:article])
     # binding.pry
-    erb :show 
+    redirect to "/articles/#{@article.id}" 
   end
 
   get '/articles/:id' do 
     @article = Article.find(params[:id])
-    erb :index
+    erb :show
   end
 
   get '/articles/:id/edit' do
-    erb :index
+    @article = Article.find(params[:id])
+    erb :edit 
   end
 
-end
+  patch '/articles/:id' do 
+    @article = Article.find(params[:id])
+    @article.update(params[:article])
+    redirect to "/articles/#{@article.id}"
+  end
 
-# rake db:create_migration NAME=create_articles
+  delete '/articles/:id' do 
+    article_to_be_deleted = Article.find(params[:id])
+    article_to_be_deleted.delete
+    redirect to "/articles"
+  end
+
+  
+
+  
+
+
+end
