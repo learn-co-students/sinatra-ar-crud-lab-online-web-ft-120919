@@ -11,6 +11,12 @@
   <form action="/articles/<%= @article.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
-</form>
+  </form>
+  <br>
+  <form action="/articles/<%= @article.id %>/edit" method="GET">
+    <input type="submit" value="Edit">
+  </form>
+  <br>
+  <a href = "/articles">Back to Articles</a>
  </body>
 </html>
