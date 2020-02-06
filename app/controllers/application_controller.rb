@@ -33,20 +33,25 @@ get '/articles/:id' do
 end
 get '/articles/:id/edit' do
   @article = Article.find_by(id: params[:id])
-  # @article.save
+  # @article.update
 erb :edit
 end 
 
 patch '/articles/:id' do
   # binding.pry
   id = params["id"]
-  new_params = {}
-  old_articles = Article.find_by(id)
-  new_params[:title] = params["title"]
-  new_params[:content] = params["content"]
-  old_post.update(new_params)
+  params = {}
+  @articles = Article.find_by(id)
+  params[:title] = params["title"]
+  params[:content] = params["content"]
+  articles.update(params)
+
 
   redirect "/articles/#{id}"
 end
-
+delete '/articles/:id/delete' do
+  @articles = Article.find(params["id"])
+  @articles.destroy
+  erb :delete
+end
 end
