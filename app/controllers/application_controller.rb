@@ -40,7 +40,10 @@ end
 
 patch '/articles/:id' do
   @article = Article.find_by(id: params[:id])
-  article.update = (id)
+  # article.update = (id)
+  @article.title = params[:title]
+  @article.content = params[:content]
+  @article.save
   
   # @article = Article.find_by(id: params[:id])
   # # params[:title] = params["title"]
@@ -54,9 +57,12 @@ patch '/articles/:id' do
 #  binding.pry
   redirect "/articles/#{@article.id}"
 end
-delete '/articles/:id/delete' do
-  @articles = Article.find(params["id"])
-  @articles.destroy
-  erb :delete
+delete '/articles/:id' do
+  # @articles = Article.find(params["id"])
+  # @articles.destroy
+  @article = Article.find_by_id(params[:id])
+  @article.delete
+  # erb :delete
+  redirect to '/articles'
 end
 end
