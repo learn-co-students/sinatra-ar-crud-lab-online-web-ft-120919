@@ -34,20 +34,25 @@ end
 get '/articles/:id/edit' do
   @article = Article.find_by(id: params[:id])
   # @article.update
+
 erb :edit
 end 
 
 patch '/articles/:id' do
-  binding.pry
-  id = params["id"]
+  @article = Article.find_by(id: params[:id])
+  article.update = (id)
   
-  @articles = Article.find_by(id)
-  params[:title] = params["title"]
-  params[:content] = params["content"]
-  articles.update(params)
+  # @article = Article.find_by(id: params[:id])
+  # # params[:title] = params["title"]
+  # # params[:content] = params["content"]
+  # @article.(title: params[:title], content: params[:content])
+  # # @article.title = params["title"]
+  # # @article.content = params["content"]
+ 
 
-
-  redirect "/articles/#{id}"
+  
+#  binding.pry
+  redirect "/articles/#{@article.id}"
 end
 delete '/articles/:id/delete' do
   @articles = Article.find(params["id"])
