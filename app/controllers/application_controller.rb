@@ -38,9 +38,9 @@ erb :edit
 end 
 
 patch '/articles/:id' do
-  # binding.pry
+  binding.pry
   id = params["id"]
-  params = {}
+  
   @articles = Article.find_by(id)
   params[:title] = params["title"]
   params[:content] = params["content"]
