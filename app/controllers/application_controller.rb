@@ -18,29 +18,35 @@ class ApplicationController < Sinatra::Base
     params.delete(:submit)
     @article = Article.create(params)
     redirect("/articles/#{@article.id}")
-    # binding.pry
-
   end
 
+  patch '/articles/:id' do
+
+    @article = Article.find_by(id: params[:id])
+    @article.update(title: params[:title], content: params[:content])
+    # @article.update(content: params[:content])
+    redirect("/articles/#{@article.id}")
+  end
+
+  get '/articles/:id/edit' do
+    @article = Article.find_by(id: params[:id])
+    erb :edit
+  end
+
+
   get '/articles/:id' do
-    
-    @article = Article.find_by(params[:id])
+    @article = Article.find_by(id: params[:id])
     erb :show
-    # binding.pry
   end
 
   get '/articles' do
     @articles = Article.all
     erb :index
-    # binding.pry
   end
-  get '/articles/:id/edit' do
-    @article = Article.find_by(params[:id])
-    erb :edit
-    # binding.pry
+  delete '/articles/:id' do
+    @article = Article.find_by(id: params[:id])
+    @article.destroy
+    redirect("/articles")
   end
-
-  patch '/articles/:id' do
-    binding.pry
-  end
+ 
 end
