@@ -1,0 +1,7 @@
+
+<form method="post" action="/articles/<%= @article.id %>">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+  <h2><%= @article[:title] %></h2>
+  <p><%= @article[:content] %><p>
+  <input type="submit" value="delete"> #or value="submit", but when I changed it to <%#article.delete%> it failed the first 3 tests and unable to update
+</form>
