@@ -2,7 +2,7 @@
 <p><%=@articles.title%></p>
 <p><%=@articles.content%></p>
 
-<form method="post" action="/articles/<%=@article.id%>">
+<form method="post" action="/articles/<%=@articles.id%>">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="delete">
 </form>
