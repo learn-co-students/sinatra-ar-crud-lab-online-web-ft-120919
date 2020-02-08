@@ -1,5 +1,5 @@
 
-<form method="post" action="/articles/<%= @article.id %>">
+<form method="post" action="/articles/<%= @article.id %>/delete">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
   <h2><%= @article[:title] %></h2>
   <p><%= @article[:content] %><p>
