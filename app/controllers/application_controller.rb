@@ -1,4 +1,4 @@
-
+require 'pry'
 require_relative '../../config/environment'
 
 class ApplicationController < Sinatra::Base
@@ -38,11 +38,13 @@ end
   
   patch '/articles/:id' do 
     @article = Article.find(params[:id])
+    #binding.pry
     @article.update(content: params[:content], title: params[:title])
+    redirect "/articles/#{@article.id}"
   end 
   
     
-  delete 'articles/:id' do 
+  delete '/articles/:id' do 
     @article = Article.find(params[:id])
     @article.destroy
     redirect '/index'

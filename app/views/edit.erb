@@ -1,8 +1,7 @@
-<form class="" action="articles/<%=@article.id %>/" method="post">
+<form class="" action="/articles/<%=@article.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   <label for="name">Title:</label>
   <textarea name="title" style="width:auto; height=auto;" value="<%= @article.title %>"></textarea>
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
   <label for="name">Content:</label>
   <textarea name="content" style="width:auto; height=auto;" value="<%= @article.content %>"></textarea>
   <input type="submit" name="" value ="Update">
