@@ -37,7 +37,8 @@ end
   end 
   
   patch '/articles/:id' do 
-    @article.update(params)
+    @article = Article.find(params[:id])
+    @article.update(content: params[:content], title: params[:title])
   end 
   
     
